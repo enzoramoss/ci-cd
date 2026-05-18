@@ -5,6 +5,10 @@ on:
     branches:
       - develop
 
+  push:
+    branches:
+      - develop
+
 env:
   PORT: ${{ vars.PORT }}
   API_TOKEN: ${{ secrets.API_TOKEN }}
@@ -28,9 +32,9 @@ jobs:
         run: npm test
 
   build:
-   runs-on: ubuntu-latest
-   needs: test
-   steps:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
       - name: Checkout no código
         uses: actions/checkout@v4
 
