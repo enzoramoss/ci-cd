@@ -5,6 +5,19 @@ on:
     branches:
       - develop
 
+  push:
+    branches:
+      - develop
+
+      paths: # participam do test no Action
+      - 'src/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'tsconfig.json'
+    paths-ignore: # nao participam do test no Action
+      - 'README.md'
+
 env:
   PORT: ${{ vars.PORT }}
   API_TOKEN: ${{ secrets.API_TOKEN }}
@@ -28,9 +41,9 @@ jobs:
         run: npm test
 
   build:
-   runs-on: ubuntu-latest
-   needs: test
-   steps:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
       - name: Checkout no código
         uses: actions/checkout@v4
 
