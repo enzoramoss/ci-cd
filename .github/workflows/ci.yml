@@ -9,6 +9,15 @@ on:
     branches:
       - develop
 
+      paths: # participam do test no Action
+      - 'src/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'tsconfig.json'
+    paths-ignore: # nao participam do test no Action
+      - 'README.md'
+
 env:
   PORT: ${{ vars.PORT }}
   API_TOKEN: ${{ secrets.API_TOKEN }}
